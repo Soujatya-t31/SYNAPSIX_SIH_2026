@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CivicVoice - Stronger Cities, Together</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <div class="logo-icon">
+            <i class="fa-solid fa-landmark"></i>
+        </div>
+
+        <div>
+            <div class="logo-text">
+                Civic<span>Voice</span>
+            </div>
+
+            <div class="tagline">
+                Stronger Cities, Together
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#">Report Issue</a>
+        <a href="#">Track Complaint</a>
+        <a href="#">Dashboard</a>
+        <a href="#">About Us</a>
+    </nav>
+
+    <div class="user-area">
+
+        <div class="notification">
+            <i class="fa-regular fa-bell"></i>
+            <span></span>
+        </div>
+
+        <div class="profile">
+            <div class="profile-circle">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <span>Hi, Citizen</span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <!-- LEFT SIDE -->
+
+        <div class="hero-left">
+
+            <h1>
+                Let's build a<br>
+                better tomorrow<br>
+                <span>together</span>
+            </h1>
+
+            <p>
+                Report infrastructure issues in your area<br>
+                and help your government take faster action.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="btn-primary">
+                    Report an Issue
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+                <button class="btn-outline">
+                    Track Complaint
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <strong>12,842</strong>
+                        <small>Issues Reported</small>
+                    </div>
+                </div>
+
+
+                <div class="stat">
+                    <div class="stat-icon red">
+                        <i class="fa-regular fa-clipboard"></i>
+                    </div>
+
+                    <div>
+                        <strong>8,921</strong>
+                        <small>Issues Resolved</small>
+                    </div>
+                </div>
+
+
+                <div class="stat">
+                    <div class="stat-icon light-green">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>96%</strong>
+                        <small>Resolution Rate</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK REPORT CARD -->
+
+        <div class="quick-report">
+
+            <div class="quick-title">
+                <h2>Quick Report</h2>
+                <p>Raise an issue in just a few steps</p>
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step active">
+                    <span>1</span>
+                    <label>Category</label>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="step">
+                    <span>2</span>
+                    <label>Location</label>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="step">
+                    <span>3</span>
+                    <label>Details</label>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="step">
+                    <span>4</span>
+                    <label>Submit</label>
+                </div>
+
+            </div>
+
+
+            <h3>What issue are you facing?</h3>
+
+
+            <div class="issue-grid">
+
+                <div class="issue selected">
+                    <i class="fa-solid fa-road"></i>
+                    <span>Road / Pothole</span>
+                    <b>✓</b>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Street Light</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span>Garbage</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-water"></i>
+                    <span>Drainage</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span>Water Leakage</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-traffic-light"></i>
+                    <span>Traffic Signal</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-toilet"></i>
+                    <span>Public Toilet</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-person-walking"></i>
+                    <span>Footpath</span>
+                </div>
+
+                <div class="issue">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <span>Other</span>
+                </div>
+
+            </div>
+
+
+            <button class="next-btn">
+                Next: Add Location
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section how-section">
+
+    <div class="section-title">
+        <h2>How It Works</h2>
+        <div></div>
+    </div>
+
+
+    <div class="how-layout">
+
+        <div class="how-card">
+
+            <div class="how-step">
+
+                <div class="number">1</div>
+
+                <div class="how-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+
+                <h4>Report</h4>
+
+                <p>
+                    Upload a photo, select category and describe the issue.
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="how-step">
+
+                <div class="number">2</div>
+
+                <div class="how-icon">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+
+                <h4>We Receive</h4>
+
+                <p>
+                    Your complaint is sent to the government server.
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="how-step">
+
+                <div class="number">3</div>
+
+                <div class="how-icon">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+
+                <h4>AI Priority Engine</h4>
+
+                <p>
+                    Our system analyzes and prioritizes the issue.
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="how-step">
+
+                <div class="number">4</div>
+
+                <div class="how-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h4>Action Taken</h4>
+
+                <p>
+                    The concerned department takes necessary action.
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="how-step">
+
+                <div class="number">5</div>
+
+                <div class="how-icon">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+
+                <h4>You're Notified</h4>
+
+                <p>
+                    You get updates at every step until it's resolved.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAP -->
+
+        <div class="map-card">
+
+            <div class="card-heading">
+
+                <h3>Live Issue Map</h3>
+
+                <button>
+                    View Full Map
+                </button>
+
+            </div>
+
+            <div class="map">
+
+                <div class="road road1"></div>
+                <div class="road road2"></div>
+                <div class="road road3"></div>
+
+                <span class="pin red-pin p1"></span>
+                <span class="pin red-pin p2"></span>
+                <span class="pin red-pin p3"></span>
+                <span class="pin red-pin p4"></span>
+
+                <span class="pin orange-pin p5"></span>
+                <span class="pin orange-pin p6"></span>
+                <span class="pin orange-pin p7"></span>
+
+                <span class="pin yellow-pin p8"></span>
+                <span class="pin yellow-pin p9"></span>
+
+                <span class="pin green-pin p10"></span>
+                <span class="pin green-pin p11"></span>
+
+            </div>
+
+            <div class="legend">
+
+                <span>
+                    <i class="dot red"></i>
+                    Critical
+                </span>
+
+                <span>
+                    <i class="dot orange"></i>
+                    High
+                </span>
+
+                <span>
+                    <i class="dot yellow"></i>
+                    Medium
+                </span>
+
+                <span>
+                    <i class="dot green"></i>
+                    Low
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RECENT ISSUES + IMPACT -->
+
+<section class="section issues-section">
+
+    <!-- RECENT ISSUES -->
+
+    <div class="recent-card">
+
+        <div class="card-heading">
+
+            <h2>Recent Issues in Your Area</h2>
+
+            <button>
+                View All
+            </button>
+
+        </div>
+
+
+        <div class="issue-row">
+
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=200&q=80">
+
+            <div class="issue-info">
+
+                <div>
+                    <span class="priority critical">CRITICAL</span>
+                    <strong>Large Pothole</strong>
+                </div>
+
+                <small>
+                    <i class="fa-solid fa-location-dot"></i>
+                    MG Road, Near City Mall
+                </small>
+
+            </div>
+
+            <span class="status progress">
+                ● In Progress
+            </span>
+
+            <span class="time">2h ago</span>
+
+        </div>
+
+
+        <div class="issue-row">
+
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=200&q=80">
+
+            <div class="issue-info">
+
+                <div>
+                    <span class="priority high">HIGH</span>
+                    <strong>Street Light Not Working</strong>
+                </div>
+
+                <small>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Park Avenue, Sector 5
+                </small>
+
+            </div>
+
+            <span class="status assigned">
+                ● Assigned
+            </span>
+
+            <span class="time">5h ago</span>
+
+        </div>
+
+
+        <div class="issue-row">
+
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=200&q=80">
+
+            <div class="issue-info">
+
+                <div>
+                    <span class="priority medium">MEDIUM</span>
+                    <strong>Garbage Overflow</strong>
+                </div>
+
+                <small>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Green Park, Near Market
+                </small>
+
+            </div>
+
+            <span class="status pending">
+                ● Pending
+            </span>
+
+            <span class="time">1d ago</span>
+
+        </div>
+
+
+        <div class="issue-row">
+
+            <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=200&q=80">
+
+            <div class="issue-info">
+
+                <div>
+                    <span class="priority low">LOW</span>
+                    <strong>Footpath Damaged</strong>
+                </div>
+
+                <small>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Lake Road, Sector 2
+                </small>
+
+            </div>
+
+            <span class="status pending">
+                ● Pending
+            </span>
+
+            <span class="time">2d ago</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- IMPACT CARD -->
+
+    <div class="impact-card">
+
+        <div class="quote">
+            “
+        </div>
+
+        <h2>
+            Your Voice, Real Impact
+        </h2>
+
+        <p>
+            Every complaint you raise helps us<br>
+            build a safer, cleaner and better city<br>
+            for everyone.
+        </p>
+
+        <div class="small-line"></div>
+
+
+        <div class="impact-stats">
+
+            <div>
+                <strong>3,456</strong>
+                <span>Citizens<br>Joined</span>
+            </div>
+
+            <div>
+                <strong>12,842</strong>
+                <span>Issues<br>Reported</span>
+            </div>
+
+            <div>
+                <strong>8,921</strong>
+                <span>Issues<br>Resolved</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SUBSCRIBE ================= -->
+
+<section class="subscribe">
+
+    <div class="subscribe-icon">
+        <i class="fa-solid fa-envelope-open-text"></i>
+    </div>
+
+    <div class="subscribe-text">
+
+        <h3>Stay Updated</h3>
+
+        <p>
+            Subscribe to get updates about your<br>
+            complaints and city announcements.
+        </p>
+
+    </div>
+
+    <div class="subscribe-form">
+
+        <input
+            type="email"
+            placeholder="Enter your email address"
+        >
+
+        <button>
+            Subscribe
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-about">
+
+            <div class="footer-logo">
+                <i class="fa-solid fa-landmark"></i>
+                Civic<span>Voice</span>
+            </div>
+
+            <p>
+                A citizen-first initiative to make our<br>
+                cities smarter, cleaner and faster.
+            </p>
+
+            <div class="social">
+
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Quick Links</h4>
+
+            <a href="#">Home</a>
+            <a href="#">Report Issue</a>
+            <a href="#">Track Complaint</a>
+            <a href="#">Dashboard</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Resources</h4>
+
+            <a href="#">How It Works</a>
+            <a href="#">FAQs</a>
+            <a href="#">Guidelines</a>
+            <a href="#">Contact Us</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Legal</h4>
+
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Disclaimer</a>
+
+        </div>
+
+
+        <div class="footer-column download">
+
+            <h4>Download App</h4>
+
+            <p>
+                Get the CivicVoice app<br>
+                for a better experience.
+            </p>
+
+            <div class="app-buttons">
+
+                <div>
+                    <i class="fa-brands fa-google-play"></i>
+                    <span>
+                        GET IT ON<br>
+                        <b>Google Play</b>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="fa-brands fa-apple"></i>
+                    <span>
+                        Download on the<br>
+                        <b>App Store</b>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2025 CivicVoice. All rights reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>
