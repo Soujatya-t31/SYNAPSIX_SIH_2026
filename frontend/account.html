@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — CivicVoice</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/account.css">
+</head>
+<body class="account">
+
+  <div class="a-shell">
+    <a class="a-brand" href="/index.html">
+      <span class="a-brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V9l8-5 8 5v12M6 21v-8M10 21v-8M14 21v-8M18 21v-8"/></svg></span>
+      Civic<b>Voice</b>
+    </a>
+
+    <div class="a-portal-switch">
+      <span class="a-portal-btn active">Citizen Login</span>
+      <a href="/gov-login.html" class="a-portal-btn">Government Login</a>
+    </div>
+
+    <div class="a-card">
+      <div class="a-tabs">
+        <button class="a-tab active" data-tab="login">Sign In</button>
+        <button class="a-tab" data-tab="register">Register</button>
+        <button class="a-tab" data-tab="forgot">Forgot Password</button>
+      </div>
+
+      <!-- LOGIN -->
+      <form class="a-form" id="loginForm" data-panel="login">
+        <label>Email<input type="email" id="loginEmail" required placeholder="you@example.com"></label>
+        <label>Password
+          <div class="a-pass-wrap">
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+            <button type="button" class="a-pass-toggle" data-target="loginPassword" aria-label="Show password">
+              <svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c7 0 10.5 7 10.5 7a13.2 13.2 0 0 1-3.1 3.9M6.6 6.6C3.5 8.5 1.5 12 1.5 12s3.5 7 10.5 7a10.6 10.6 0 0 0 4.4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+            </button>
+          </div>
+        </label>
+        <div class="a-error" id="loginError"></div>
+        <button type="submit" class="a-submit">Sign In</button>
+        <p class="a-switch">No account? <a href="#" data-switch="register">Register here</a></p>
+      </form>
+
+      <!-- REGISTER -->
+      <form class="a-form a-hidden" id="registerForm" data-panel="register">
+        <label>Full name<input type="text" id="regName" required placeholder="Jane Citizen"></label>
+        <label>Email<input type="email" id="regEmail" required placeholder="you@example.com"></label>
+        <label>Password
+          <div class="a-pass-wrap">
+            <input type="password" id="regPassword" required placeholder="At least 6 characters" minlength="6">
+            <button type="button" class="a-pass-toggle" data-target="regPassword" aria-label="Show password">
+              <svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c7 0 10.5 7 10.5 7a13.2 13.2 0 0 1-3.1 3.9M6.6 6.6C3.5 8.5 1.5 12 1.5 12s3.5 7 10.5 7a10.6 10.6 0 0 0 4.4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+            </button>
+          </div>
+        </label>
+        <label>Confirm password
+          <div class="a-pass-wrap">
+            <input type="password" id="regPasswordConfirm" required placeholder="Re-enter your password" minlength="6">
+            <button type="button" class="a-pass-toggle" data-target="regPasswordConfirm" aria-label="Show password">
+              <svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c7 0 10.5 7 10.5 7a13.2 13.2 0 0 1-3.1 3.9M6.6 6.6C3.5 8.5 1.5 12 1.5 12s3.5 7 10.5 7a10.6 10.6 0 0 0 4.4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+            </button>
+          </div>
+        </label>
+        <div class="a-error" id="registerError"></div>
+        <button type="submit" class="a-submit">Create Account</button>
+        <p class="a-switch">Already have an account? <a href="#" data-switch="login">Sign in</a></p>
+      </form>
+
+      <!-- FORGOT -->
+      <form class="a-form a-hidden" id="forgotForm" data-panel="forgot">
+        <p class="a-hint">Enter your account email — we'll generate a reset token. In this prototype there's no email service wired up, so the token is shown directly below instead of being emailed.</p>
+        <label>Email<input type="email" id="forgotEmail" required placeholder="you@example.com"></label>
+        <div class="a-error" id="forgotError"></div>
+        <div class="a-note a-hidden" id="forgotNote"></div>
+        <button type="submit" class="a-submit">Send Reset Token</button>
+        <p class="a-switch">Remembered it? <a href="#" data-switch="login">Sign in</a></p>
+      </form>
+
+      <!-- RESET -->
+      <form class="a-form a-hidden" id="resetForm" data-panel="reset">
+        <p class="a-hint">Paste the reset token you were given, and choose a new password.</p>
+        <label>Reset token<input type="text" id="resetToken" required class="mono"></label>
+        <label>New password
+          <div class="a-pass-wrap">
+            <input type="password" id="resetPassword" required minlength="6" placeholder="At least 6 characters">
+            <button type="button" class="a-pass-toggle" data-target="resetPassword" aria-label="Show password">
+              <svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c7 0 10.5 7 10.5 7a13.2 13.2 0 0 1-3.1 3.9M6.6 6.6C3.5 8.5 1.5 12 1.5 12s3.5 7 10.5 7a10.6 10.6 0 0 0 4.4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+            </button>
+          </div>
+        </label>
+        <div class="a-error" id="resetError"></div>
+        <button type="submit" class="a-submit">Update Password</button>
+        <p class="a-switch"><a href="#" data-switch="login">Back to sign in</a></p>
+      </form>
+    </div>
+  </div>
+
+<script src="js/auth.js"></script>
+<script src="js/account.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>

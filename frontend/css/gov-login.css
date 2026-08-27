@@ -1,0 +1,27 @@
+/* Government portal — reuses account.css's .a-* form building blocks but with
+   a command-center (dashboard.css) palette instead of the citizen teal/paper
+   theme, so the two login experiences read as visibly different systems. */
+body.gov-account {
+  background: linear-gradient(160deg, #05090F 0%, #0A1620 55%, #16283A 100%);
+}
+
+.gov-brand { color: var(--dash-text); }
+.gov-brand b { color: var(--marigold); }
+.gov-brand-icon { background: rgba(224,145,43,0.16); color: var(--marigold); }
+
+.gov-card-head { padding: 22px 24px 4px; }
+.gov-card-title { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--ink); }
+.gov-card-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; line-height: 1.5; }
+.gov-card-sub a { color: var(--teal); font-weight: 600; }
+
+.gov-submit { background: var(--dash-bg); }
+.gov-submit:hover { opacity: 0.9; }
+
+.gov-demo-box {
+  margin: 4px 24px 22px; padding: 12px 14px; background: var(--paper);
+  border: 1px dashed var(--line); border-radius: var(--radius-md); font-size: 12px;
+}
+.gov-demo-title { font-weight: 700; color: var(--ink); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10.5px; }
+.gov-demo-row { display: flex; justify-content: space-between; gap: 10px; padding: 2px 0; color: var(--ink-soft); }
+.gov-demo-row span:first-child { font-family: var(--font-mono); color: var(--ink); }
+.gov-demo-pass { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); color: var(--ink-soft); }

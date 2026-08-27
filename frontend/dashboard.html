@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infrastructure Command Center</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="dash">
+<script src="js/gov-auth.js"></script>
+<script>GovAuth.requireLogin();</script>
+
+  <div class="d-shell">
+
+    <div class="d-topbar">
+      <div class="brand"><span class="dot"></span><span>Infrastructure Command Center</span></div>
+      <div class="d-topbar-right">
+        <div class="d-view-toggle" id="viewToggle">
+          <button class="active" data-view="queue">Priority Queue</button>
+          <button data-view="departments">Departments</button>
+        </div>
+        <div class="d-officer" id="officerBadge">
+          <span class="d-officer-name" id="officerName">–</span>
+          <span class="d-officer-dept" id="officerDept">–</span>
+        </div>
+        <button class="d-logout" id="govLogoutBtn">Log Out</button>
+        <a class="exit" href="/index.html">&larr; Exit</a>
+      </div>
+    </div>
+
+    <div class="d-stats" id="statStrip">
+      <div class="d-stat" data-level="" style="--stat-color:#8FA3B5">
+        <div class="n" id="statTotal">–</div>
+        <div class="l">All incidents</div>
+      </div>
+      <div class="d-stat" data-level="__workflow" style="--stat-color:#6FD1C8; cursor:default;">
+        <div class="n" id="statWorkflow">–</div>
+        <div class="l">All phases</div>
+      </div>
+      <div class="d-stat" data-level="Critical" style="--stat-color:#C1392B">
+        <div class="n" id="statCritical" style="color:#C1392B">–</div>
+        <div class="l">Critical</div>
+      </div>
+      <div class="d-stat" data-level="High" style="--stat-color:#E0912B">
+        <div class="n" id="statHigh" style="color:#E0912B">–</div>
+        <div class="l">High</div>
+      </div>
+      <div class="d-stat" data-level="Medium" style="--stat-color:#2E6E8E">
+        <div class="n" id="statMedium" style="color:#2E6E8E">–</div>
+        <div class="l">Medium</div>
+      </div>
+      <div class="d-stat" data-level="Low" style="--stat-color:#5C7A63">
+        <div class="n" id="statLow" style="color:#5C7A63">–</div>
+        <div class="l">Low</div>
+      </div>
+      <div class="d-stat" data-level="__affected" style="--stat-color:#E0912B; cursor:default;">
+        <div class="n" id="statAffected">–</div>
+        <div class="l">Citizens affected</div>
+      </div>
+    </div>
+
+    <div class="d-body" id="queueView">
+      <div id="map"></div>
+
+      <div class="d-sidebar">
+        <div class="d-sidebar-header">
+          <div class="title">Priority queue</div>
+          <div class="d-filters" id="statusFilters">
+            <button class="d-filter-chip active" data-status="">All statuses</button>
+            <button class="d-filter-chip" data-status="RECEIVED">Received</button>
+            <button class="d-filter-chip" data-status="ASSIGNED">Assigned</button>
+            <button class="d-filter-chip" data-status="IN_PROGRESS">In progress</button>
+            <button class="d-filter-chip" data-status="RESOLVED">Resolved</button>
+          </div>
+        </div>
+        <div class="d-list" id="complaintList">
+          <div class="d-empty">Loading incidents…</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-body d-departments c-hidden" id="departmentsView">
+      <div class="d-dept-grid" id="deptGrid">
+        <div class="d-empty">Loading departments…</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="detailOverlay"></div>
+  <div id="toast" class="d-toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/categories.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body.account {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #0B1C2C 0%, #123B3E 55%, #146B6E 100%);
+  padding: 24px;
+}
+.a-shell { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.a-brand {
+  display: flex; align-items: center; gap: 10px; color: #fff; font-family: var(--font-display);
+  font-size: 20px; font-weight: 600;
+}
+.a-brand b { color: #35D7C6; }
+.a-brand-icon {
+  width: 36px; height: 36px; border-radius: 10px; background: rgba(53,215,198,0.16); color: #35D7C6;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Citizen / Government login toggle — sits above the sign-in card on both
+   account.html and gov-login.html so either audience can jump to the other
+   portal's login without hunting for a link. */
+.a-portal-switch { display: flex; gap: 4px; background: rgba(255,255,255,0.12); padding: 4px; border-radius: 10px; width: 100%; }
+.a-portal-btn {
+  flex: 1; text-align: center; padding: 9px 6px; border-radius: 7px; font-size: 12.5px; font-weight: 700;
+  color: rgba(255,255,255,0.75); text-decoration: none; font-family: var(--font-body); cursor: pointer;
+}
+.a-portal-btn.active { background: #fff; color: var(--ink); }
+
+.a-card { background: #fff; border-radius: var(--radius-lg); padding: 8px; width: 100%; box-shadow: 0 30px 70px rgba(6,20,28,0.4); }
+.a-tabs { display: flex; gap: 4px; padding: 8px; }
+.a-tab {
+  flex: 1; border: none; background: none; padding: 10px 6px; font-size: 12.5px; font-weight: 700;
+  color: var(--ink-soft); border-radius: 8px; cursor: pointer; font-family: var(--font-body);
+}
+.a-tab.active { background: var(--paper); color: var(--ink); }
+
+.a-form { padding: 10px 24px 26px; display: flex; flex-direction: column; gap: 16px; }
+.a-form.a-hidden { display: none; }
+
+/* BUG FIX: this was previously scoped as `.a-form.a-hidden`, which only ever
+   matched the <form> elements. The forgot-password status box (`.a-note.a-hidden`)
+   is a <div>, not a <form>, so it never matched — meaning that box was permanently
+   visible (as an empty box before submit) regardless of what the JS toggled. This
+   generic rule makes `.a-hidden` actually hide any element that carries it. */
+.a-hidden { display: none !important; }
+
+/* Password visibility toggle */
+.a-pass-wrap { position: relative; }
+.a-pass-wrap input { padding-right: 42px; width: 100%; }
+.a-pass-toggle {
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; color: var(--ink-soft);
+  padding: 6px; display: flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+}
+.a-pass-toggle:hover { color: var(--teal); background: var(--paper); }
+.a-pass-toggle svg { width: 18px; height: 18px; }
+.a-pass-toggle .eye-off { display: none; }
+.a-pass-toggle.showing .eye { display: none; }
+.a-pass-toggle.showing .eye-off { display: block; }
+
+.a-form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.a-form input {
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; font-family: var(--font-body);
+  font-size: 14px; font-weight: 400;
+}
+.a-form input:focus { outline: none; border-color: var(--teal); }
+.a-hint { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+
+.a-submit {
+  background: var(--teal); color: #fff; border: none; border-radius: 10px; padding: 13px; font-family: var(--font-display);
+  font-weight: 700; font-size: 14.5px; cursor: pointer; transition: opacity 0.12s ease;
+}
+.a-submit:hover { opacity: 0.92; }
+.a-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.a-switch { text-align: center; font-size: 13px; color: var(--ink-soft); margin: 2px 0 0; }
+.a-switch a { color: var(--teal); font-weight: 600; }
+
+.a-error { background: var(--critical-bg); color: var(--critical); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; display: none; }
+.a-error.show { display: block; }
+.a-note { background: var(--low-bg); color: #2E7D53; border-radius: 8px; padding: 12px; font-size: 12.5px; line-height: 1.6; word-break: break-all; }

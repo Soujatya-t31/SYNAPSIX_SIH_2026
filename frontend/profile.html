@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Reports — CivicVoice</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/landing.css">
+<link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="landing">
+
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a class="l-brand" href="/index.html">
+        <span class="l-brand-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V9l8-5 8 5v12M6 21v-8M10 21v-8M14 21v-8M18 21v-8"/></svg></span>
+        <span class="l-brand-text">
+          <span class="l-brand-name">Civic<b>Voice</b></span>
+          <span class="l-brand-tag">Stronger Cities, Together</span>
+        </span>
+      </a>
+      <nav class="l-nav">
+        <a href="/index.html">Home</a>
+        <a href="/citizen.html">Report Issue</a>
+        <a href="/index.html#track">Track Complaint</a>
+        <a href="/citizen-dashboard.html">Dashboard</a>
+      </nav>
+      <div class="l-header-actions">
+        <div class="l-dropdown-wrap">
+          <button class="l-icon-btn" id="notifBtn" aria-label="Notifications">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span class="l-notif-dot"></span>
+          </button>
+          <div class="l-dropdown" id="notifDropdown">
+            <div class="l-dropdown-title">Notifications</div>
+            <div id="notifList">
+              <div class="l-dropdown-item"><span>Sign in to see updates on your reports.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="l-dropdown-wrap">
+          <button class="l-user" id="userMenuBtn">
+            <span class="l-avatar" id="userAvatar">?</span>
+            <span class="l-user-name" id="userLabel">Account</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="l-dropdown" id="userDropdown">
+            <a href="/account.html" class="l-dropdown-link l-hidden" id="loginLink">Sign In / Register</a>
+            <a href="/profile.html" class="l-dropdown-link l-hidden" id="myReportsLink">My Reports</a>
+            <a href="#" class="l-dropdown-link l-hidden" id="logoutLink">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="l-section">
+    <div class="p-hero">
+      <div class="p-avatar" id="profileAvatar">?</div>
+      <div>
+        <h1 id="profileName">&hellip;</h1>
+        <p id="profileEmail">&hellip;</p>
+      </div>
+    </div>
+
+    <div class="p-stats" id="profileStats">
+      <div><b id="pStatTotal">0</b><span>Reports Filed</span></div>
+      <div><b id="pStatResolved">0</b><span>Resolved</span></div>
+      <div><b id="pStatOpen">0</b><span>In Progress / Pending</span></div>
+    </div>
+
+    <div class="l-panel">
+      <div class="l-panel-head">
+        <h2 class="l-h2 sm">My Reports</h2>
+        <a href="/citizen.html" class="l-link">+ New Report</a>
+      </div>
+      <div id="myReportsList" class="l-recent">
+        <div class="l-recent-empty">Loading your reports&hellip;</div>
+      </div>
+    </div>
+  </section>
+
+<script src="js/categories.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
