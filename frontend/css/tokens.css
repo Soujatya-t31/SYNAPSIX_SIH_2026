@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Civic palette — deep indigo-teal ink, warm marigold accent (civic signage, not startup terracotta) */
+  --ink: #0E2A2E;
+  --ink-soft: #1C4347;
+  --paper: #F5F3EC;
+  --paper-raised: #FFFFFF;
+  --line: #DCD8C8;
+  --marigold: #E0912B;
+  --marigold-dark: #B96F17;
+  --teal: #146B6E;
+
+  /* Priority signal colors — consistent across citizen + dashboard views */
+  --critical: #C1392B;
+  --critical-bg: #FBEAE8;
+  --high: #E0912B;
+  --high-bg: #FCF1DE;
+  --medium: #2E6E8E;
+  --medium-bg: #E7F0F5;
+  --low: #5C7A63;
+  --low-bg: #EDF2EC;
+
+  /* Subtle teal-tinted "selected" fill (e.g. the active category card on the
+     home page quick-report widget). Needs a dark override below — without
+     one this stayed a near-white mint tint in dark mode, so light --ink
+     text sat almost invisibly on top of it. */
+  --teal-tint: #EAF6F4;
+
+  /* Dashboard (command-center) palette */
+  --dash-bg: #0A1620;
+  --dash-panel: #101E2C;
+  --dash-panel-raised: #16283A;
+  --dash-line: #223245;
+  --dash-text: #E7EDF2;
+  --dash-text-dim: #8FA3B5;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+/* ---------------- Theme (light default, dark override) ----------------
+   Citizen-facing pages (index/citizen/citizen-dashboard/profile/account) are
+   light ("paper") by default; the government command center is dark by
+   default. A single global data-theme attribute on <html> (set by theme.js,
+   persisted in localStorage) flips both: dark override for the citizen
+   palette, light override for the --dash-* palette. Everything downstream
+   just uses these variables, so most components theme for free. */
+html[data-theme="dark"] {
+  --ink: #EDEFEC;
+  --ink-soft: #AFC0BF;
+  --paper: #10181A;
+  --paper-raised: #1A2426;
+  --line: #2B3739;
+  --critical-bg: #3A1E1B;
+  --high-bg: #3A2C15;
+  --medium-bg: #16262E;
+  --low-bg: #1B2A20;
+  --teal-tint: #16302E;
+}
+html[data-theme="light"] {
+  --dash-bg: #F1EFE6;
+  --dash-panel: #FFFFFF;
+  --dash-panel-raised: #F5F3EC;
+  --dash-line: #DCD8C8;
+  --dash-text: #0E2A2E;
+  --dash-text-dim: #5C6E70;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { overflow-x: hidden; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--paper); overflow-x: hidden; transition: background 0.15s ease, color 0.15s ease; }
+img, svg { max-width: 100%; }
+
+/* Shared icon-only theme toggle button. Parent context (navy header, dash
+   topbar, light citizen header) supplies color/background via its own
+   button class (e.g. .l-icon-btn, .d-theme-toggle, .theme-toggle) — this
+   block only handles the sun/moon icon swap, so it works everywhere. */
+.icon-moon { display: none; }
+html[data-theme="dark"] .icon-sun { display: none; }
+html[data-theme="dark"] .icon-moon { display: inline-flex; }
+
+.theme-toggle {
+  background: none; border: 1.5px solid var(--line); color: var(--ink-soft);
+  width: 34px; height: 34px; border-radius: 50%; cursor: pointer; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--teal); }
+.theme-toggle svg { width: 17px; height: 17px; }
+
+a { color: inherit; }
+
+.mono { font-family: var(--font-mono); letter-spacing: 0.01em; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+.badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.badge.critical { color: var(--critical); background: var(--critical-bg); }
+.badge.high { color: var(--marigold-dark); background: var(--high-bg); }
+.badge.medium { color: var(--medium); background: var(--medium-bg); }
+.badge.low { color: var(--low); background: var(--low-bg); }
+
+::selection { background: var(--marigold); color: white; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.c-hidden { display: none !important; }

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JanDrishti — Stronger Cities, Together</title>
+<script>(function(){try{document.documentElement.setAttribute("data-theme", localStorage.getItem("civic_theme") || "light");}catch(e){}})();</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/landing.css">
+<!-- Leaflet + OpenStreetMap: no Google Maps API key required -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="landing">
+
+  <!-- ============ HEADER ============ -->
+  <header class="l-header" id="top">
+    <div class="l-header-inner">
+      <a class="l-brand" href="/index.html">
+        <span class="l-brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V9l8-5 8 5v12M6 21v-8M10 21v-8M14 21v-8M18 21v-8"/></svg>
+        </span>
+        <span class="l-brand-text">
+          <span class="l-brand-name">Jan<b>Drishti</b></span>
+          <span class="l-brand-tag">Stronger Cities, Together</span>
+        </span>
+      </a>
+
+      <nav class="l-nav">
+        <a href="/index.html" class="active">Home</a>
+        <a href="/citizen.html">Report Issue</a>
+        <a href="#track">Track Complaint</a>
+        <a href="/citizen-dashboard.html">Dashboard</a>
+        <a href="#about">About Us</a>
+      </nav>
+
+      <div class="l-header-actions">
+        <button class="l-icon-btn theme-toggle" id="themeToggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+        </button>
+        <div class="l-dropdown-wrap">
+          <button class="l-icon-btn" id="notifBtn" aria-label="Notifications">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span class="l-notif-dot"></span>
+          </button>
+          <div class="l-dropdown" id="notifDropdown">
+            <div class="l-dropdown-title">Notifications</div>
+            <div id="notifList">
+              <div class="l-dropdown-item"><span>Sign in to see updates on your reports.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="l-dropdown-wrap">
+          <button class="l-user" id="userMenuBtn">
+            <span class="l-avatar" id="userAvatar">?</span>
+            <span class="l-user-name" id="userLabel">Sign In</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="l-dropdown" id="userDropdown">
+            <a href="/account.html" class="l-dropdown-link" id="loginLink">Sign In / Register</a>
+            <a href="/profile.html" class="l-dropdown-link l-hidden" id="myReportsLink">My Reports</a>
+            <a href="#" class="l-dropdown-link l-hidden" id="logoutLink">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="l-hero">
+    <div class="l-hero-bg"></div>
+    <div class="l-hero-inner">
+
+      <div class="l-hero-copy">
+        <h1>Let's build a <br>better tomorrow<br><span class="grad">together</span></h1>
+        <p>Report infrastructure issues in your area and help your government take faster action.</p>
+        <div class="l-hero-actions">
+          <a href="/citizen.html" class="l-btn l-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Report an Issue
+          </a>
+          <a href="#track" class="l-btn l-btn-outline">
+            Track Complaint
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </a>
+        </div>
+
+        <div class="l-hero-stats" id="heroStats">
+          <div class="l-hero-stat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+            <div><b id="statReported">&hellip;</b><span>Issues Reported</span></div>
+          </div>
+          <div class="l-hero-stat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m8 12 3 3 5-6"/></svg>
+            <div><b id="statResolved">&hellip;</b><span>Issues Resolved</span></div>
+          </div>
+          <div class="l-hero-stat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+            <div><b id="statRate">&hellip;</b><span>Resolution Rate</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Report card -->
+      <div class="l-quick">
+        <div class="l-quick-head">
+          <h3>Quick Report</h3>
+          <p>Raise an issue in just a few steps</p>
+        </div>
+
+        <div class="l-steps">
+          <div class="l-step active"><span class="l-step-dot">1</span><span>Category</span></div>
+          <div class="l-step"><span class="l-step-dot">2</span><span>Location</span></div>
+          <div class="l-step"><span class="l-step-dot">3</span><span>Details</span></div>
+          <div class="l-step"><span class="l-step-dot">4</span><span>Submit</span></div>
+        </div>
+
+        <div class="l-quick-label">What issue are you facing?</div>
+        <div class="l-cat-grid" id="quickCatGrid"><!-- filled by landing.js --></div>
+
+        <button class="l-next-btn" id="quickNextBtn">
+          Next: Add Location
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="l-quick-hint">Choosing a category here carries straight over to the report form — you'll only need to add the photo, location and details.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS + LIVE MAP ============ -->
+  <section class="l-section l-two-col" id="how-it-works">
+    <div class="l-panel">
+      <h2 class="l-h2">How It Works</h2>
+
+      <div class="l-hiw">
+        <div class="l-hiw-step">
+          <span class="l-hiw-num">1</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <b>Report</b>
+          <p>Upload a photo, select category and describe the issue.</p>
+        </div>
+        <div class="l-hiw-step">
+          <span class="l-hiw-num">2</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <b>We Receive</b>
+          <p>Your complaint is sent to the government server.</p>
+        </div>
+        <div class="l-hiw-step">
+          <span class="l-hiw-num">3</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9zM4 9h2M4 15h2M18 9h2M18 15h2M9 4v2M15 4v2M9 18v2M15 18v2"/></svg>
+          <b>AI Priority Engine</b>
+          <p>Our system analyzes and prioritizes the issue.</p>
+        </div>
+        <div class="l-hiw-step">
+          <span class="l-hiw-num">4</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <b>Action Taken</b>
+          <p>The concerned department takes necessary action.</p>
+        </div>
+        <div class="l-hiw-step">
+          <span class="l-hiw-num">5</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          <b>You're Notified</b>
+          <p>You get updates at every step until it's resolved.</p>
+        </div>
+      </div>
+      <div class="l-hiw-line"></div>
+    </div>
+
+    <div class="l-panel">
+      <div class="l-panel-head">
+        <h2 class="l-h2 sm">Live Issue Map</h2>
+      </div>
+      <div id="liveMap" class="l-map"></div>
+      <div class="l-legend">
+        <span><i style="background:var(--critical)"></i>Critical</span>
+        <span><i style="background:var(--high)"></i>High</span>
+        <span><i style="background:var(--medium)"></i>Medium</span>
+        <span><i style="background:var(--low)"></i>Low</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECENT ISSUES + IMPACT ============ -->
+  <section class="l-section l-two-col">
+    <div class="l-panel">
+      <div class="l-panel-head">
+        <h2 class="l-h2 sm">Recent Issues in Your Area</h2>
+        <a href="/citizen-dashboard.html" class="l-link">View All</a>
+      </div>
+      <div class="l-recent" id="recentList">
+        <div class="l-recent-empty">Loading recent reports&hellip;</div>
+      </div>
+    </div>
+
+    <div class="l-impact">
+      <svg class="l-quote" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6c-2.8 1.6-4 3.9-4 6.6C3 15.6 5 18 8 18c2.2 0 4-1.7 4-3.9 0-2-1.4-3.5-3.4-3.5-.4 0-.7 0-1 .1.2-1.7 1.6-3.3 3.4-4.2L7 6Zm10 0c-2.8 1.6-4 3.9-4 6.6 0 3 2 5.4 5 5.4 2.2 0 4-1.7 4-3.9 0-2-1.4-3.5-3.4-3.5-.4 0-.7 0-1 .1.2-1.7 1.6-3.3 3.4-4.2L17 6Z"/></svg>
+      <h3>Your Voice, Real Impact</h3>
+      <p>Every complaint you raise helps us build a safer, cleaner and better city for everyone.</p>
+      <hr>
+      <div class="l-impact-stats">
+        <div><b id="impactCitizens">&hellip;</b><span>Citizens Joined</span></div>
+        <div><b id="impactReported">&hellip;</b><span>Issues Reported</span></div>
+        <div><b id="impactResolved">&hellip;</b><span>Issues Resolved</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRACK COMPLAINT ============ -->
+  <section class="l-section" id="track">
+    <div class="l-panel l-track-panel">
+      <h2 class="l-h2">Track a Complaint</h2>
+      <p class="l-track-sub">Enter the report ID you received after submitting (e.g. <span class="mono">INF-202608-A1B2C3</span>) to see its current status and full priority breakdown — just that one report, not the whole map.</p>
+      <div class="l-track-row">
+        <input type="text" id="trackInput" placeholder="INF-202608-A1B2C3">
+        <button id="trackSubmit">Track Complaint</button>
+      </div>
+      <div id="trackResult"></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="l-section" id="faq">
+    <div class="l-panel">
+      <h2 class="l-h2">Frequently Asked Questions</h2>
+      <div class="l-faq" id="faqList">
+        <div class="l-faq-item open">
+          <button class="l-faq-q">How does JanDrishti decide what gets fixed first? <span>+</span></button>
+          <div class="l-faq-a">Every report is scored by a transparent priority engine that combines severity, public impact, safety risk, location criticality, historical recurrence and future risk into one score — no black box, every number is visible on the report itself.</div>
+        </div>
+        <div class="l-faq-item">
+          <button class="l-faq-q">Do I need to create an account to report an issue? <span>+</span></button>
+          <div class="l-faq-a">No — anyone can submit a report anonymously. Creating an account lets you track all your past reports in one place and get notified as their status changes.</div>
+        </div>
+        <div class="l-faq-item">
+          <button class="l-faq-q">How do I check the status of a report I already filed? <span>+</span></button>
+          <div class="l-faq-a">Use the "Track Complaint" section above and enter the report ID you were given after submitting — it shows the live status (Submitted, Assigned, In Progress or Resolved) and the full scoring breakdown.</div>
+        </div>
+        <div class="l-faq-item">
+          <button class="l-faq-q">What happens if multiple people report the same pothole? <span>+</span></button>
+          <div class="l-faq-a">Duplicate reports near the same location are automatically linked to one incident. Each extra report raises that incident's public-impact score, so widely-noticed problems naturally rise in priority.</div>
+        </div>
+        <div class="l-faq-item">
+          <button class="l-faq-q">Is a photo required when reporting? <span>+</span></button>
+          <div class="l-faq-a">It's optional, but strongly recommended — our computer-vision check uses the photo to verify the reported issue, which increases its severity score and speeds up department response.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUIDELINES ============ -->
+  <section class="l-section" id="guidelines">
+    <div class="l-panel">
+      <h2 class="l-h2">Reporting Guidelines</h2>
+      <div class="l-guidelines">
+        <div><b>01</b><p>Report only genuine public infrastructure issues — potholes, broken streetlights, garbage overflow, drainage, water leakage, damaged footpaths, faulty traffic signals and similar civic problems.</p></div>
+        <div><b>02</b><p>Add a clear photo whenever possible, taken close enough that the damage is visible, and allow location access so the report reaches the right department.</p></div>
+        <div><b>03</b><p>Keep descriptions factual and specific — mention nearby landmarks, how long the issue has persisted, and anything that makes it more dangerous (e.g. near a school or busy crossing).</p></div>
+        <div><b>04</b><p>Don't file duplicate reports for the same spot — JanDrishti automatically links nearby reports of the same issue into a single incident, and your report still counts.</p></div>
+        <div><b>05</b><p>Misuse of the platform — false reports, offensive content, or reporting private property disputes — may result in reports being removed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="l-section" id="contact">
+    <div class="l-panel">
+      <h2 class="l-h2">Contact Us</h2>
+      <form class="l-contact-form" id="contactForm">
+        <div class="l-contact-row">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Your email" required>
+        </div>
+        <textarea placeholder="How can we help?" rows="4" required></textarea>
+        <button type="submit" class="l-btn l-btn-primary" style="align-self:flex-start;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="l-section">
+    <div class="l-newsletter">
+      <div class="l-newsletter-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </div>
+      <div class="l-newsletter-copy">
+        <b>Stay Updated</b>
+        <span>Subscribe to get updates about your complaints and city announcements.</span>
+      </div>
+      <form class="l-newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT + LEGAL ============ -->
+  <section class="l-section" id="about">
+    <div class="l-panel">
+      <h2 class="l-h2">About JanDrishti</h2>
+      <p class="l-about-text">JanDrishti is a citizen-first initiative that connects everyday people directly with the government departments responsible for fixing local infrastructure problems. Every report is verified, scored transparently and routed to the right department automatically — so the most dangerous, highest-impact problems surface first.</p>
+    </div>
+  </section>
+
+  <section class="l-section" id="legal">
+    <div class="l-panel l-legal">
+      <h3 id="privacy">Privacy Policy</h3>
+      <p>We collect only what's needed to route and resolve your report — category, description, an optional photo, and the location you share. Location data is used to route reports to the correct department and is shown publicly only as an approximate area, never your exact device location tied to your identity, unless you're logged in and viewing your own reports.</p>
+      <h3 id="terms">Terms of Service</h3>
+      <p>JanDrishti is provided as a civic reporting tool. Reports should be accurate and made in good faith. Departments make final decisions on prioritisation and resolution timelines; the priority score shown is an assistive ranking, not a guarantee of response time.</p>
+      <h3 id="disclaimer">Disclaimer</h3>
+      <p>This is a prototype built for demonstration purposes. Response times, department assignments and resolution outcomes shown here are illustrative and may not reflect an official government commitment.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="l-footer">
+    <div class="l-footer-top">
+      <div class="l-footer-col l-footer-brand">
+        <div class="l-brand">
+          <span class="l-brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V9l8-5 8 5v12M6 21v-8M10 21v-8M14 21v-8M18 21v-8"/></svg></span>
+          <span class="l-brand-name">Jan<b>Drishti</b></span>
+        </div>
+        <p>A citizen-first initiative to make our cities smarter, cleaner and faster.</p>
+        <div class="l-social">
+          <a href="#" data-toast="Facebook page coming soon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l1-4h-4V6.5C13 5.3 13.5 4 15.3 4H17V.2C16.6.1 15.4 0 14.1 0 11 0 9 2 9 5.6V9H6v4h3v9h4Z"/></svg></a>
+          <a href="#" data-toast="Twitter page coming soon" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.4.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.2 4.2 0 0 0-7.2 3.8A11.8 11.8 0 0 1 3 4.9a4.2 4.2 0 0 0 1.3 5.6c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.7 3.3 4a4.3 4.3 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.4 8.4 0 0 1 2 18.6a11.9 11.9 0 0 0 6.4 1.9c7.7 0 11.9-6.4 11.9-11.9v-.5c.8-.6 1.5-1.3 2-2.2Z"/></svg></a>
+          <a href="#" data-toast="Instagram page coming soon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" data-toast="YouTube channel coming soon" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.4-5.2c-.3-1-.9-1.7-1.9-2C18.9 4.3 12 4.3 12 4.3s-6.9 0-8.7.5c-1 .3-1.6 1-1.9 2C1 8.5 1 12 1 12s0 3.5.4 5.2c.3 1 .9 1.7 1.9 2 1.8.5 8.7.5 8.7.5s6.9 0 8.7-.5c1-.3 1.6-1 1.9-2 .4-1.7.4-5.2.4-5.2ZM9.8 15.5v-7l6 3.5-6 3.5Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="l-footer-col">
+        <h4>Quick Links</h4>
+        <a href="#top">Home</a>
+        <a href="/citizen.html">Report Issue</a>
+        <a href="#track">Track Complaint</a>
+        <a href="/citizen-dashboard.html">Dashboard</a>
+      </div>
+
+      <div class="l-footer-col">
+        <h4>Resources</h4>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQs</a>
+        <a href="#guidelines">Guidelines</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+
+      <div class="l-footer-col">
+        <h4>Legal</h4>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#disclaimer">Disclaimer</a>
+      </div>
+
+      <div class="l-footer-col">
+        <h4>Download App</h4>
+        <p>Get the JanDrishti app for a better experience.</p>
+        <div class="l-stores">
+          <button class="l-store-badge" data-toast="Mobile app coming soon">&#9654; Google Play</button>
+          <button class="l-store-badge" data-toast="Mobile app coming soon">&#63743; App Store</button>
+        </div>
+      </div>
+    </div>
+    <div class="l-footer-bottom">&copy; 2026 JanDrishti. All rights reserved.</div>
+  </footer>
+
+  <div class="l-toast" id="toast"></div>
+
+<script src="js/theme.js"></script>
+<script src="js/categories.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>

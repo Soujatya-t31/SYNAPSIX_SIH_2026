@@ -1,0 +1,44 @@
+# Python virtual environments
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# User uploads
+backend/uploads/
+
+# ML model files (bundled YOLO weights are the exception — they're tracked
+# so the app works fully offline out of the box)
+*.pt
+*.pth
+*.onnx
+!backend/models/yolov8n.pt

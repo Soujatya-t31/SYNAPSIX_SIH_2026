@@ -1,0 +1,24 @@
+.cd-hero { padding: 8px 4px 4px; }
+.cd-hero h1 { margin-bottom: 6px; }
+.cd-hero p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+.cd-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.cd-filter-chip {
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft);
+  border-radius: 999px; padding: 7px 14px; font-size: 12.5px; font-weight: 600;
+  cursor: pointer; font-family: var(--font-body);
+}
+.cd-filter-chip.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+/* Upvote column — appended after the existing .l-recent-item columns
+   (thumb / mid / right) so each row still uses the site's existing
+   recent-issues layout, just with one more piece of info on the end. */
+.cd-upvote-col { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; margin-left: 6px; }
+.cd-upvote-btn {
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--teal);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 12px; cursor: pointer; white-space: nowrap;
+}
+.cd-upvote-btn:hover { border-color: var(--teal); background: #fff; }
+.cd-upvote-btn:disabled { color: var(--ink-soft); cursor: default; }
+.cd-upvote-count { font-size: 11px; color: var(--ink-soft); }
